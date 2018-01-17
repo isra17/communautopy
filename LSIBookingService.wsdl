@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://reservauto.net/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://reservauto.net/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://reservauto.net/">
+      <s:element name="CancelBooking">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VehicleID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CancelBookingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CancelBookingResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateBooking">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VehicleID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateBookingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateBookingResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCurrentBooking">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCurrentBookingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCurrentBookingResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVehicleProposals">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Latitude" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="Longitude" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVehicleProposalsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetVehicleProposalsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVehicleLastUsed">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="BranchID" type="tns:Branchs" />
+            <s:element minOccurs="0" maxOccurs="1" name="Vin" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="Branchs">
+        <s:restriction base="s:string">
+          <s:enumeration value="Communauto" />
+          <s:enumeration value="Vrtucar" />
+          <s:enumeration value="CarShareHFX" />
+          <s:enumeration value="Mobizen" />
+          <s:enumeration value="Emov" />
+          <s:enumeration value="Demo" />
+          <s:enumeration value="Carmine" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetVehicleLastUsedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetVehicleLastUsedResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="CancelBookingSoapIn">
+    <wsdl:part name="parameters" element="tns:CancelBooking" />
+  </wsdl:message>
+  <wsdl:message name="CancelBookingSoapOut">
+    <wsdl:part name="parameters" element="tns:CancelBookingResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateBookingSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateBooking" />
+  </wsdl:message>
+  <wsdl:message name="CreateBookingSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateBookingResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCurrentBookingSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCurrentBooking" />
+  </wsdl:message>
+  <wsdl:message name="GetCurrentBookingSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCurrentBookingResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetVehicleProposalsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetVehicleProposals" />
+  </wsdl:message>
+  <wsdl:message name="GetVehicleProposalsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetVehicleProposalsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetVehicleLastUsedSoapIn">
+    <wsdl:part name="parameters" element="tns:GetVehicleLastUsed" />
+  </wsdl:message>
+  <wsdl:message name="GetVehicleLastUsedSoapOut">
+    <wsdl:part name="parameters" element="tns:GetVehicleLastUsedResponse" />
+  </wsdl:message>
+  <wsdl:message name="CancelBookingHttpGetIn">
+    <wsdl:part name="CustomerID" type="s:string" />
+    <wsdl:part name="VehicleID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CancelBookingHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CreateBookingHttpGetIn">
+    <wsdl:part name="CustomerID" type="s:string" />
+    <wsdl:part name="VehicleID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CreateBookingHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCurrentBookingHttpGetIn">
+    <wsdl:part name="CustomerID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCurrentBookingHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetVehicleProposalsHttpGetIn">
+    <wsdl:part name="CustomerID" type="s:string" />
+    <wsdl:part name="Latitude" type="s:string" />
+    <wsdl:part name="Longitude" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetVehicleProposalsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetVehicleLastUsedHttpGetIn">
+    <wsdl:part name="BranchID" type="s:string" />
+    <wsdl:part name="Vin" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetVehicleLastUsedHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CancelBookingHttpPostIn">
+    <wsdl:part name="CustomerID" type="s:string" />
+    <wsdl:part name="VehicleID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CancelBookingHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CreateBookingHttpPostIn">
+    <wsdl:part name="CustomerID" type="s:string" />
+    <wsdl:part name="VehicleID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CreateBookingHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCurrentBookingHttpPostIn">
+    <wsdl:part name="CustomerID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCurrentBookingHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetVehicleProposalsHttpPostIn">
+    <wsdl:part name="CustomerID" type="s:string" />
+    <wsdl:part name="Latitude" type="s:string" />
+    <wsdl:part name="Longitude" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetVehicleProposalsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetVehicleLastUsedHttpPostIn">
+    <wsdl:part name="BranchID" type="s:string" />
+    <wsdl:part name="Vin" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetVehicleLastUsedHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="LSIBookingServiceSoap">
+    <wsdl:operation name="CancelBooking">
+      <wsdl:input message="tns:CancelBookingSoapIn" />
+      <wsdl:output message="tns:CancelBookingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateBooking">
+      <wsdl:input message="tns:CreateBookingSoapIn" />
+      <wsdl:output message="tns:CreateBookingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentBooking">
+      <wsdl:input message="tns:GetCurrentBookingSoapIn" />
+      <wsdl:output message="tns:GetCurrentBookingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVehicleProposals">
+      <wsdl:input message="tns:GetVehicleProposalsSoapIn" />
+      <wsdl:output message="tns:GetVehicleProposalsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVehicleLastUsed">
+      <wsdl:input message="tns:GetVehicleLastUsedSoapIn" />
+      <wsdl:output message="tns:GetVehicleLastUsedSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="LSIBookingServiceHttpGet">
+    <wsdl:operation name="CancelBooking">
+      <wsdl:input message="tns:CancelBookingHttpGetIn" />
+      <wsdl:output message="tns:CancelBookingHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateBooking">
+      <wsdl:input message="tns:CreateBookingHttpGetIn" />
+      <wsdl:output message="tns:CreateBookingHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentBooking">
+      <wsdl:input message="tns:GetCurrentBookingHttpGetIn" />
+      <wsdl:output message="tns:GetCurrentBookingHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVehicleProposals">
+      <wsdl:input message="tns:GetVehicleProposalsHttpGetIn" />
+      <wsdl:output message="tns:GetVehicleProposalsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVehicleLastUsed">
+      <wsdl:input message="tns:GetVehicleLastUsedHttpGetIn" />
+      <wsdl:output message="tns:GetVehicleLastUsedHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="LSIBookingServiceHttpPost">
+    <wsdl:operation name="CancelBooking">
+      <wsdl:input message="tns:CancelBookingHttpPostIn" />
+      <wsdl:output message="tns:CancelBookingHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateBooking">
+      <wsdl:input message="tns:CreateBookingHttpPostIn" />
+      <wsdl:output message="tns:CreateBookingHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentBooking">
+      <wsdl:input message="tns:GetCurrentBookingHttpPostIn" />
+      <wsdl:output message="tns:GetCurrentBookingHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVehicleProposals">
+      <wsdl:input message="tns:GetVehicleProposalsHttpPostIn" />
+      <wsdl:output message="tns:GetVehicleProposalsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVehicleLastUsed">
+      <wsdl:input message="tns:GetVehicleLastUsedHttpPostIn" />
+      <wsdl:output message="tns:GetVehicleLastUsedHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="LSIBookingServiceSoap" type="tns:LSIBookingServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CancelBooking">
+      <soap:operation soapAction="http://reservauto.net/CancelBooking" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateBooking">
+      <soap:operation soapAction="http://reservauto.net/CreateBooking" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentBooking">
+      <soap:operation soapAction="http://reservauto.net/GetCurrentBooking" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVehicleProposals">
+      <soap:operation soapAction="http://reservauto.net/GetVehicleProposals" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVehicleLastUsed">
+      <soap:operation soapAction="http://reservauto.net/GetVehicleLastUsed" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="LSIBookingServiceSoap12" type="tns:LSIBookingServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CancelBooking">
+      <soap12:operation soapAction="http://reservauto.net/CancelBooking" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateBooking">
+      <soap12:operation soapAction="http://reservauto.net/CreateBooking" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentBooking">
+      <soap12:operation soapAction="http://reservauto.net/GetCurrentBooking" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVehicleProposals">
+      <soap12:operation soapAction="http://reservauto.net/GetVehicleProposals" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVehicleLastUsed">
+      <soap12:operation soapAction="http://reservauto.net/GetVehicleLastUsed" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="LSIBookingServiceHttpGet" type="tns:LSIBookingServiceHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="CancelBooking">
+      <http:operation location="/CancelBooking" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateBooking">
+      <http:operation location="/CreateBooking" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentBooking">
+      <http:operation location="/GetCurrentBooking" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVehicleProposals">
+      <http:operation location="/GetVehicleProposals" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVehicleLastUsed">
+      <http:operation location="/GetVehicleLastUsed" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="LSIBookingServiceHttpPost" type="tns:LSIBookingServiceHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="CancelBooking">
+      <http:operation location="/CancelBooking" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateBooking">
+      <http:operation location="/CreateBooking" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentBooking">
+      <http:operation location="/GetCurrentBooking" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVehicleProposals">
+      <http:operation location="/GetVehicleProposals" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVehicleLastUsed">
+      <http:operation location="/GetVehicleLastUsed" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LSIBookingService">
+    <wsdl:port name="LSIBookingServiceSoap" binding="tns:LSIBookingServiceSoap">
+      <soap:address location="https://www.reservauto.net/WCF/LSI/LSIBookingService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="LSIBookingServiceSoap12" binding="tns:LSIBookingServiceSoap12">
+      <soap12:address location="https://www.reservauto.net/WCF/LSI/LSIBookingService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="LSIBookingServiceHttpGet" binding="tns:LSIBookingServiceHttpGet">
+      <http:address location="https://www.reservauto.net/WCF/LSI/LSIBookingService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="LSIBookingServiceHttpPost" binding="tns:LSIBookingServiceHttpPost">
+      <http:address location="https://www.reservauto.net/WCF/LSI/LSIBookingService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
