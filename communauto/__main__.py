@@ -1,5 +1,7 @@
+from haversine import haversine
 from . import Client
 client = Client()
-for vehicle in client.get_vehicle_proposals(45.49834,-73.5727541).vehicles:
-    import ipdb;ipdb.set_trace()
-    print('{}: {}'.format(vehicle, vehicle.position))
+proposals = client.get_vehicle_proposals(45.5393025, -73.5695876)
+vehicle = proposals.closest
+distance = haversine(vehicle.position, proposals.user_position)
+print('Closest vehicle: {} at {:0.2f} km'.format(vehicle, distance))
