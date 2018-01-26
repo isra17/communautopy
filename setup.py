@@ -7,7 +7,7 @@ setuptools.setup(name='communautopy',
                  author='isra17',
                  author_email='isra017@gmail.com',
                  url='https://github.com/isra17/communautopy',
-                 py_modules=['communauto', 'haversine'],
-                 install_requires=['zeep'],
+                 packages=['communauto'],
+                 install_requires=['zeep', 'haversine', 'googlemaps'],
+                 python_requires='>=3.5',
                  license='GNU General Public License v3 (GPLv3)')
-
